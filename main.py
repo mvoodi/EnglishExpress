@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import random
 from googletrans import Translator
+import langid
 
 def recognize_speech():
     recognizer = sr.Recognizer()
@@ -10,7 +11,8 @@ def recognize_speech():
         random_word_english = translate_to_english(random_word_russian)
 
         print(f"Случайное слово на русском: {random_word_russian}")
-        print(f"Переведите и произнесите слово правильно! Для завершения скажите 'хватит'.")
+        print(f"Переведите и произнесите слово правильно! \n"
+              f"Для завершения скажите 'enough'.")
 
         with sr.Microphone() as source:
             print("Скажите перевод слова...")
@@ -18,16 +20,17 @@ def recognize_speech():
             audio = recognizer.listen(source)
 
             try:
-                text = recognizer.recognize_google(audio, language="ru-RU")
+                text = recognizer.recognize_google(audio, language="en-US")
                 print(f"Ваш ответ: {text}")
 
-                # Проверка на завершение игры
-                if text.lower() == "хватит":
-                    print("Игра завершена. Спасибо за участие!")
+                if text.lower() == "enough":
+                    print(f"Игра завершена. Правильный ответ: {random_word_english}. Спасибо за участие!")
                     break
 
-                # Обработка различных фраз
-                handle_phrases(text, random_word_english)
+                if is_english(text):
+                    handle_phrases(text, random_word_english)
+                else:
+                    print("Пожалуйста, произнесите текст на английском.")
 
             except sr.UnknownValueError:
                 print("Речь не распознана")
@@ -47,11 +50,15 @@ def translate_to_english(word):
     translation = translator.translate(word, src="ru", dest="en").text
     return translation
 
+def is_english(text):
+    lang, _ = langid.classify(text)
+    return lang == 'en'
+
 def handle_phrases(text, expected_english_word):
     if text.lower() == expected_english_word.lower():
         print("Абсолютно верно!!")
     else:
-        print("Вы неправильно произнесли или перевели слово.")
+        print(f"Вы неправильно произнесли или перевели слово. Правильный ответ: {expected_english_word}.")
 
 if __name__ == "__main__":
     recognize_speech()
