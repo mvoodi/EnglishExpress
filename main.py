@@ -6,7 +6,6 @@ def recognize_speech():
     recognizer = sr.Recognizer()
 
     while True:
-        # Добавление случайного слова перед фразой "Говорите что-то..."
         random_word_russian = generate_random_word_from_file("easy_russian_words.txt")
         random_word_english = translate_to_english(random_word_russian)
 
