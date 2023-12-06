@@ -11,19 +11,19 @@ def recognize_speech():
     random_word_english = translate_to_english(random_word_russian)
 
     print(f"Случайное слово на русском: {random_word_russian}")
-    print(f"Случайное слово на английском: {random_word_english}")
+    print(f"Переведите и произнесите слово правильно!")
 
     with sr.Microphone() as source:
-        print("Говорите что-то...")
+        print("Скажите перевод слова...")
         recognizer.adjust_for_ambient_noise(source)
         audio = recognizer.listen(source)
 
         try:
             text = recognizer.recognize_google(audio, language="ru-RU")
-            print(f"Вы сказали: {text}")
+            print(f"Ваш ответ: {text}")
 
             # Обработка различных фраз
-            handle_phrases(text)
+            handle_phrases(text, random_word_english)
 
         except sr.UnknownValueError:
             print("Речь не распознана")
@@ -47,14 +47,11 @@ def translate_to_english(word):
     return translation
 
 
-def handle_phrases(text):
-    # Приветствие
-    if "привет" in text.lower() or "здравствуйте" in text.lower():
-        print("Привет! Как я могу вам помочь?")
-
-    # Ответ на вопрос "Как тебя зовут?"
-    elif "как тебя зовут" in text.lower():
-        print("Меня зовут Боб.")
+def handle_phrases(text, expected_english_word):
+    if text.lower() == expected_english_word.lower():
+        print("Абсолютно верно!!")
+    else:
+        print("Вы неправильно произнесли или перевели слово.")
 
 
 if __name__ == "__main__":
