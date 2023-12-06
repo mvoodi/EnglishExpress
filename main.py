@@ -2,9 +2,11 @@ import speech_recognition as sr
 import random
 from googletrans import Translator
 import langid
+import time
 
 def recognize_speech():
     recognizer = sr.Recognizer()
+    total_score = 0
 
     while True:
         random_word_russian = generate_random_word_from_file("easy_russian_words.txt")
@@ -24,13 +26,18 @@ def recognize_speech():
                 print(f"Ваш ответ: {text}")
 
                 if text.lower() == "enough":
-                    print(f"Игра завершена. Правильный ответ: {random_word_english}. Спасибо за участие!")
+                    print(f"Игра завершена. Общее количество очков: {total_score}. Спасибо за участие!")
                     break
 
                 if is_english(text):
-                    handle_phrases(text, random_word_english)
+                    score = handle_phrases(text, random_word_english)
+                    total_score += score
+                    print(f"Текущий счет: {score}. Общий счет: {total_score}")
+
+                    # Пауза перед следующим словом (3 секунды)
+                    time.sleep(2)
                 else:
-                    print("Пожалуйста, произнесите текст на английском.")
+                    print("Речь не распознана")
 
             except sr.UnknownValueError:
                 print("Речь не распознана")
@@ -57,8 +64,10 @@ def is_english(text):
 def handle_phrases(text, expected_english_word):
     if text.lower() == expected_english_word.lower():
         print("Абсолютно верно!!")
+        return 100
     else:
-        print(f"Вы неправильно произнесли или перевели слово. Правильный ответ: {expected_english_word}.")
+        print(f"Неправильно. Правильный ответ: {expected_english_word}.")
+        return 0
 
 if __name__ == "__main__":
     recognize_speech()
