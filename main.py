@@ -1,15 +1,17 @@
 import speech_recognition as sr
 import random
-import nltk
+from googletrans import Translator
 
-nltk.download("words")
 
 def recognize_speech():
     recognizer = sr.Recognizer()
 
     # Добавление случайного слова перед фразой "Говорите что-то..."
-    random_word = generate_random_word()
-    print(f"Случайное слово перед началом: {random_word}")
+    random_word_russian = generate_random_word_from_file("easy_russian_words.txt")
+    random_word_english = translate_to_english(random_word_russian)
+
+    print(f"Случайное слово на русском: {random_word_russian}")
+    print(f"Случайное слово на английском: {random_word_english}")
 
     with sr.Microphone() as source:
         print("Говорите что-то...")
@@ -28,18 +30,32 @@ def recognize_speech():
         except sr.RequestError as e:
             print(f"Ошибка при запросе к сервису распознавания: {e}")
 
-def generate_random_word():
-    words = nltk.corpus.words.words()
+
+def generate_random_word_from_file(file_path):
+    words = load_words_from_file(file_path)
     return random.choice(words)
 
-def handle_phrases(text):
 
+def load_words_from_file(file_path):
+    with open(file_path, "r", encoding="utf-8") as file:
+        return [line.strip() for line in file]
+
+
+def translate_to_english(word):
+    translator = Translator()
+    translation = translator.translate(word, src="ru", dest="en").text
+    return translation
+
+
+def handle_phrases(text):
+    # Приветствие
     if "привет" in text.lower() or "здравствуйте" in text.lower():
         print("Привет! Как я могу вам помочь?")
 
-
+    # Ответ на вопрос "Как тебя зовут?"
     elif "как тебя зовут" in text.lower():
         print("Меня зовут Боб.")
+
 
 if __name__ == "__main__":
     recognize_speech()
