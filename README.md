@@ -5,10 +5,12 @@ Prerequisites
 Before running the script, make sure you have the required Python libraries installed:
 
 pip install SpeechRecognition googletrans==4.0.0 langid
+
 How to Play
 Execute the script in a Python environment:
 
 python main.py
+
 The program will display a random Russian word, and you need to pronounce the English translation of that word.
 
 To end the game, say "enough."
