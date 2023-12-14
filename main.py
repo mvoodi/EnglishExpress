@@ -5,22 +5,14 @@ from googletrans import Translator
 import langid
 import sys
 
-
-def clear_console():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        print('\033c', end='')
-
-
 def display_menu():
     try:
         clear_console()
         print("Меню:")
-        print("1: Изменить список слов")
-        print("2: Добавить новые слова")
-        print("3: Переводческий Марафон")
-        print("4: Фонетический Тренажёр")
+        print("1: Изменение списка слов")
+        print("2: Добавить новые слова в список")
+        print("3: Игра: Переводческий Марафон")
+        print("4: Игра: Фонетический Тренажёр")
         print("5: Выйти")
         choice = input("Выберите номер пункта из меню: ")
         return choice
