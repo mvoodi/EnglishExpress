@@ -15,8 +15,13 @@ Installation
 
 bash
 
+<<<<<<< HEAD
 git clone https://github.com/your-username/english-express.git
 cd english-express
+=======
+git clone https://github.com/mvoodi/introductionProject.git
+cd voiceRecognizer
+>>>>>>> e32889b73e838e94d446f506ec9a778ffd856e3b
 
 - Install dependencies:
 
@@ -48,4 +53,8 @@ Contributors:
 
 
 License
+<<<<<<< HEAD
 This project is licensed under the MIT License.
+=======
+This project is licensed under the MIT License.
+>>>>>>> e32889b73e838e94d446f506ec9a778ffd856e3b
