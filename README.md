@@ -1,5 +1,7 @@
 Project "English Express"
+
 Description
+
 The "English Express" project is a collection of interactive games that utilize speech recognition and text processing for learning and entertainment purposes.
 
 Requirements
@@ -15,13 +17,9 @@ Installation
 
 bash
 
-<<<<<<< HEAD
-git clone https://github.com/your-username/english-express.git
-cd english-express
-=======
 git clone https://github.com/mvoodi/introductionProject.git
 cd voiceRecognizer
->>>>>>> e32889b73e838e94d446f506ec9a778ffd856e3b
+
 
 - Install dependencies:
 
