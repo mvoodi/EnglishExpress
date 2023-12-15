@@ -15,8 +15,8 @@ Installation
 
 bash
 
-git clone https://github.com/your-username/english-express.git
-cd english-express
+git clone https://github.com/mvoodi/introductionProject.git
+cd voiceRecognizer
 
 - Install dependencies:
 
