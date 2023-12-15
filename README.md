@@ -1,31 +1,51 @@
-Speech Recognition Game
-This Python script is a simple speech recognition game that tests your language translation skills. It randomly selects a Russian word, translates it to English, and challenges you to pronounce the English word correctly. The game continues until you say "enough."
+Project "English Express"
+Description
+The "English Express" project is a collection of interactive games that utilize speech recognition and text processing for learning and entertainment purposes.
 
-Prerequisites
-Before running the script, make sure you have the required Python libraries installed:
+Requirements
+To run the project, you need to 
+- install the following libraries:
 
-pip install SpeechRecognition googletrans==4.0.0 langid
+bash
 
-How to Play
-Execute the script in a Python environment:
+pip install SpeechRecognition googletrans==4.0.0-rc1 langid
+Installation
 
-python main.py
+- Clone the repository:
 
-The program will display a random Russian word, and you need to pronounce the English translation of that word.
+bash
 
-To end the game, say "enough."
+git clone https://github.com/your-username/english-express.git
+cd english-express
 
-Important Notes
-Make sure you have a working microphone connected to your device.
+- Install dependencies:
 
-The script uses Google's speech recognition service, so an internet connection is required.
+bash
 
-If the recognition fails, it will notify you, and you can try again.
-
-Pay attention to the correct pronunciation; the script evaluates your response against the accurate English translation.
-
-The game keeps track of your score, and the total score is displayed when you choose to end the game.
-
-Have fun and improve your language skills!
+pip install -r requirements.txt
 
 
+Project Structure
+english_express.py: Main file with the source code of the games and functions.
+easy_english_words.txt: File with the list of words used in the games.
+
+Usage
+Run the english_express.py file:
+
+bash
+
+python english_express.py
+
+Follow the instructions in the menu to choose a game and perform the necessary actions.
+
+
+Contributors:
+
+- Arykova Aleksandra
+- Abdykaiymov Myktybek
+- Zhumabaeva Dilnaz
+- Asilov Bektur
+
+
+License
+This project is licensed under the MIT License.
