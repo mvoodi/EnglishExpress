@@ -101,16 +101,14 @@ def recognize_speech_game_manual():
             print("Возвращение в меню...")
             return
 
-        if is_english(text) or langid.classify(text)[0] == 'ru':
+        if is_english(text):
             if is_english(text):
                 score = handle_phrases(text, random_word_english)
-            else:
-                score = handle_phrases(text, random_word_russian)
             total_score += score
             print(f"Текущий счет: {score}. Общий счет: {total_score}")
 
         else:
-            print("Введенный текст не распознан или язык не поддерживается")
+            print("Введенный текст не правильный или язык не поддерживается")
 
 
 def recognize_speech_game_voice():
@@ -141,11 +139,9 @@ def recognize_speech_game_voice():
                 print("Возвращение в меню...")
                 return
 
-            if is_english(text) or langid.classify(text)[0] == 'ru':
+            if is_english(text):
                 if is_english(text):
                     score = handle_phrases(text, random_word_english)
-                else:
-                    score = handle_phrases(text, random_word_russian)
                 total_score += score
                 print(f"Текущий счет: {score}. Общий счет: {total_score}")
 

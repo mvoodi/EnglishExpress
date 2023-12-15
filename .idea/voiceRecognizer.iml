@@ -4,7 +4,11 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
+<<<<<<< HEAD
     <orderEntry type="jdk" jdkName="Python 3.9 (voiceRecognizer)" jdkType="Python SDK" />
+=======
+    <orderEntry type="jdk" jdkName="Python 3.11 (introductionProject)" jdkType="Python SDK" />
+>>>>>>> ef8cda2bf7b0f1aaca1f3263d86b124f870a0cf4
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
